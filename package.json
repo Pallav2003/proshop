@@ -1,0 +1,36 @@
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "eCommerce Application with MERN",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import" : "node backend/seeder.js",
+    "data:destroy" : "node backend/seeder.js -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pallav2003/proshop.git"
+  },
+  "author": "Pallav Choudhary",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pallav2003/proshop/issues"
+  },
+  "homepage": "https://github.com/Pallav2003/proshop#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "colors": "^1.4.0",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "dotenv": "^17.2.1",
+    "nodemon": "^3.1.10"
+  }
+}
