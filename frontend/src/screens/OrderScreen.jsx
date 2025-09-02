@@ -5,7 +5,7 @@ import {
   Col,
   ListGroup,
   Image,
-  // Button,
+  Button,
   Card,
 } from "react-bootstrap";
 import { toast } from "react-toastify";
@@ -43,7 +43,7 @@ const OrderScreen = () => {
 
   useEffect(() => {
     if (!errorPayPal && !loadingPayPal && paypal.clientId) {
-      const loadPaypalScript = async () => {
+      const loadPayPalScript = async () => {
         paypalDispatch({
           type: "resetOptions",
           value: {
@@ -55,7 +55,7 @@ const OrderScreen = () => {
       };
       if (order && !order.isPaid) {
         if (!window.paypal) {
-          loadPaypalScript();
+          loadPayPalScript();
         }
       }
     }
@@ -73,11 +73,11 @@ const OrderScreen = () => {
     });
   }
 
-  // async function onApproveTest() {
-  //   await payOrder({ orderId, details: { payer: {} } });
-  //   refetch();
-  //   toast.success("Payment Successfull");
-  // }
+  async function onApproveTest() {
+    await payOrder({ orderId, details: { payer: {} } });
+    refetch();
+    toast.success("Payment Successfull");
+  }
 
   function onError(err) {
     toast.error(err.message);
@@ -196,12 +196,12 @@ const OrderScreen = () => {
                     <Loader />
                   ) : (
                     <div>
-                      {/* <Button
+                      <Button
                         onClick={onApproveTest}
                         style={{ marginBottom: "10px" }}
                       >
                         Test Pay Order
-                      </Button> */}
+                      </Button>
                       <div>
                         <PayPalButtons
                           createOrder={createOrder}
