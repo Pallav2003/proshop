@@ -25,7 +25,6 @@ const ProductEditScreen = () => {
   const {
     data: product,
     isLoading,
-    refetch,
     error,
   } = useGetProductDetailsQuery(productId);
 
@@ -62,7 +61,7 @@ const ProductEditScreen = () => {
       description,
     };
 
-    const result = updateProduct(updatedProduct);
+    const result = await updateProduct(updatedProduct);
     if (result.error) {
       toast.error(result.error);
     } else {
@@ -117,18 +116,18 @@ const ProductEditScreen = () => {
               ></Form.Control>
             </Form.Group>
 
-            <Form.Group controlId="image">
+            <Form.Group controlId="image" className="my-2">
               <Form.Label>Image</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter image url"
                 value={image}
-                onChange={(e) => setImage}
+                onChange={(e) => setImage(e.target.value)}
               ></Form.Control>
               <Form.Control
+                type="file"
                 label="Choose File"
                 onChange={uploadFileHandler}
-                type="file"
               ></Form.Control>
               {loadingUpload && <Loader />}
             </Form.Group>
