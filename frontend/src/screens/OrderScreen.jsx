@@ -72,7 +72,7 @@ const OrderScreen = () => {
 
   // TESTING ONLY! REMOVE BEFORE PRODUCTION
   async function onApproveTest() {
-    await payOrder({ orderId, details: { payer: {} } });
+    await payOrder({ orderId, details });
     refetch();
 
     toast.success('Order is paid');
